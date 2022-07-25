@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import RecordDaily from '../Screens/DailyRecord/Record';
-import DailyHumorModal from '../Screens/DailyRecord/ModalHumorDaily/DailyHumorMolda'
+import DailyHumorModal from '../Screens/DailyRecord/teste'
 import Cards from '../Screens/Cards/index';
 import Profile from '../Screens/Profile/index';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'

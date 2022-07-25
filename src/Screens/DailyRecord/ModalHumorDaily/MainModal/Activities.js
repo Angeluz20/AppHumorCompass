@@ -1,5 +1,5 @@
 import React,{Component, useState} from "react";
-import { FlatList, Text, View,Image,Dimensions, StyleSheet, TouchableOpacity } from "react-native";
+import { FlatList, Text, View,Image,Dimensions, StyleSheet, TouchableOpacity, InteractionManager } from "react-native";
 import { Icon } from "react-native-vector-icons/FontAwesome5";
 
 const numColumns = 3
@@ -76,19 +76,7 @@ export default class Activities extends Component{
             ]
         }
     }
-    _renderItem = ({item, index}) =>{
-        return (
-          <TouchableOpacity style={styles.itemStyle}>
-            <View >  
-            
-                <Image source={item.img} style={{width:50, height:50}}/>
-               
-          
-          </View> 
-          <Text>{item.nome}</Text>
-            </TouchableOpacity> 
-        )
-    }
+   
     render(){
         let {container, itemText} = styles
         return(
@@ -96,8 +84,25 @@ export default class Activities extends Component{
                 <FlatList
                   data={this.state.Activities}
                   keyExtractor={(item, index) => index.toString()}
-                  renderItem={this._renderItem}
-                    numColumns={numColumns}                
+                  
+                    numColumns={numColumns} 
+                    renderItem={({item})=> <View style={{
+                        height:100,
+                        width:130,
+                        justifyContent:'center',
+                        alignItems:'center',
+                        marginTop:30,
+                        marginBottom:50,
+                       
+                       }}> 
+                                <View style={styles.styleBorderItem}>
+                               <TouchableOpacity>
+                                      <Image source={item.img} style={{width:50, height:50}}/>
+                                      
+                                </TouchableOpacity>
+                                </View><Text>{item.nome}</Text>
+                       
+                </View>}                       
                 />
             </View>
         )
@@ -106,7 +111,7 @@ export default class Activities extends Component{
 
 const styles = StyleSheet.create({
     container:{
-      
+        backgroundColor:'white',
         paddingTop:40,
         padding:20,
         paddingBottom:40,
@@ -114,18 +119,17 @@ const styles = StyleSheet.create({
         
        
     },
-    itemStyle:{
-       
-        alignItems:'center',
+    styleBorderItem:{
+      
+        width:80,
+        height:80,
         justifyContent:'center',
-        flex:1,
-        margin:1,
-        height: 125,
-        width:10,
-        borderRadius:100,
-        borderColor:'black',
-        borderWidth:1
+        alignItems:'center',
+        borderRadius:60,
+        borderWidth:1,
+        borderColor:'black'
     },
+  
     itemText:{
         fontSize:15,
         color:'#fff'

@@ -1,6 +1,34 @@
-import React,{Component} from "react";
+import React,{Component,useState} from "react";
 import { FlatList, Image, StyleSheet, Text,Dimensions, TouchableOpacity, View, ScrollView, TextInput } from "react-native";
 import DailyModal from './MainModal/Activities'
+
+const Item = ({item, backgroundColor})=> {
+    return(
+       
+            <View style={{
+                
+                    height:80,
+                    width:80,
+                    justifyContent:'center',
+                    alignItems:'center'
+                   }}>
+                    
+                   <View style={styles.containerHumor}>
+                   
+                    <TouchableOpacity onPress={() => alert(item.nome)}>
+                        <View style={styles.selectHumorColor}>
+                             <Image source={item.img} style={{width:47.17, height:47.17}}/>
+                         </View> 
+                   </TouchableOpacity> 
+                    
+                    <Text style={styles.nome}>
+                        {item.nome}
+                    </Text>
+                    </View>
+                   </View>
+       
+    )
+}
 export default class Select extends Component{
   
     constructor(props){
@@ -9,28 +37,28 @@ export default class Select extends Component{
              DATA: [
                 {
                  id:'1',
-                 img: require('../../../assets/humores/happy.png'),
-                 nome:'happy'
+                 img: require('../../../assets/humores/radiant.png'),
+                 nome:'RADIANTE'
                 },
                 {
                  id:'2',
-                 img: require('../../../assets/humores/sad.png'),
-                 nome:'sad'
+                 img: require('../../../assets/humores/happy.png'),
+                 nome:'FELIZ'
                 },
                 {
                  id:'3',
                  img: require('../../../assets/humores/ok.png'),
-                 nome:'ok'
+                 nome:'OK'
                 },
                 {
                   id:'4',
-                  img: require('../../../assets/humores/radiant.png'),
-                   nome:'radiant'
+                  img: require('../../../assets/humores/sad.png'),
+                   nome:'TRISTE'
                 },
                 {
                   id:'5',
                   img: require('../../../assets/humores/terrible.png'),
-                   nome:'terrible'
+                   nome:'ACABADO'
                 }
             ]
          
@@ -39,9 +67,14 @@ export default class Select extends Component{
    
     
     render(){
-        
+    const renderItem = ({item}) => {
         return(
-            <ScrollView>
+            <Item item={item}/>
+        )
+            } 
+        return(
+                      
+             <ScrollView>
         <View style={styles.conatainer}>
             <View style={styles.title}>
             <Text style={styles.txtTitle}>Como você está?</Text>
@@ -50,26 +83,8 @@ export default class Select extends Component{
                data={this.state.DATA}
                keyExtractor={(item) => String(item.id)}
                horizontal
-               renderItem={({item})=> <View style={{
-                
-                height:80,
-                width:80,
-                justifyContent:'center',
-                alignItems:'center'
-               }}>
-                
-               <View style={styles.containerHumor}>
-               
-                <TouchableOpacity onPress={() => alert(item.nome)}>
-                    <View style={styles.selectHumorColor}>
-                         <Image source={item.img} style={{width:47.17, height:47.17}}/>
-                     </View> 
-               </TouchableOpacity> 
-                <Text style={styles.nome}>
-                    {item.nome}
-                </Text>
-                </View>
-               </View>}
+               renderItem={renderItem}
+       
               />
               
               <View style={styles.iconContainer}>
@@ -89,7 +104,7 @@ export default class Select extends Component{
 
 const styles = StyleSheet.create({
    conatainer:{
-   
+    backgroundColor:'white',
     padding:20,
     alignItems:'center'
    },
@@ -124,12 +139,12 @@ const styles = StyleSheet.create({
     },
     iconContainer:{
         marginTop:60,
-        marginBottom:45,
+        marginBottom:55,
         width:'100%',
         height:600,
         borderColor:'black',
         borderWidth:1,
-        borderRadius:10
+        borderRadius:7
     },
     CommentUser:{
         borderColor:'black',

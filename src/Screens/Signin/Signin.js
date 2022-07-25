@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Image,TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 import styleSignin from './styleSignin';
+import firebase from '../../firebase/firebase';
 
 export  function Signin({navigation}){
 
