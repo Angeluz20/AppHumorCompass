@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, SafeAreaView, TextInput, View, StyleSheet, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { FlatList, SafeAreaView, TextInput, View, StyleSheet, Text, TouchableOpacity, Image, ScrollView, KeyboardAvoidingView, Platform } from "react-native";
 import Activities from "./ModalHumorDaily/MainModal/Activities";
 import Exit from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -75,14 +75,14 @@ const Teste = ({navigation}) => {
   <ScrollView>
     <SafeAreaView style={styles.container}>  
  
-    <TouchableOpacity
+    {/* <TouchableOpacity
         style={styles.styleBtn}
         //onPress={() => {
           //navigation.navigate('DataList')
        // }}>
        >
         <Exit name='x' size={20} color={'#969696'} />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
         
         <View style={styles.TitleStyle}>
            <Text style={styles.txtTitleTop}>Como você está?</Text>
@@ -93,7 +93,7 @@ const Teste = ({navigation}) => {
              <Text style={styles.date}>
                  <AntDesign name="calendar" size={15} color={'#969696'}/>  HOJE 23 DE JANEIRO
              </Text>
-             
+
              <Text style={styles.time}>
                  <AntDesign name='clockcircleo' size={15} color={'#969696'} /> 08:35   
              </Text>
@@ -109,12 +109,17 @@ const Teste = ({navigation}) => {
         <View style={styles.activitiesArea}>
             <Activities/>
         </View>
-            <View style={styles.CommentUser}>
-            <TextInput
-            placeholder="Escreva aqui o que aconteceu hoje... ">
+            <KeyboardAvoidingView 
+          
+            style={styles.CommentUser}>
+            <ScrollView style={{width:'100%'}}>
+                <TextInput
+                    
+                    placeholder="Escreva aqui o que aconteceu hoje... ">
                 
-            </TextInput>
-       </View>
+                 </TextInput>
+            </ScrollView>
+       </KeyboardAvoidingView>
 
        <TouchableOpacity 
                  onPress={() => navigation.navigate('ProfileScreee')}
@@ -144,12 +149,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     lineHeight:19.5,
     marginRight:350,
-    marginTop:25
+    marginTop:70
     
   },
   TitleStyle:{
     marginTop:80,
-    marginBottom:80,
+    marginBottom:90,
     alignItems:'center'
   },
   txtTitleTop:{
@@ -189,10 +194,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15,
-    fontWeight:'bold'
+    fontWeight:'bold',
+  
   },
   activitiesArea:{
-
     width:'90%',
     height:600,
     justifyContent:'center',
@@ -202,7 +207,8 @@ const styles = StyleSheet.create({
     borderColor:'black',
     marginBottom:25,
     marginTop:60,
-    padding:10
+    padding:5,
+
   },
   CommentUser:{
       borderColor:'black',
@@ -214,7 +220,7 @@ const styles = StyleSheet.create({
       padding:10
   },
    btnSave:{
-       width:'80%',
+       width:'90%',
        backgroundColor:'#304FFE',
        padding:17,
        margin:25,

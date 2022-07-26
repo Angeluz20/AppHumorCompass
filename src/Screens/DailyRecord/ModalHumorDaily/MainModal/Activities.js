@@ -100,7 +100,7 @@ export default class Activities extends Component{
                                       <Image source={item.img} style={{width:50, height:50}}/>
                                       
                                 </TouchableOpacity>
-                                </View><Text>{item.nome}</Text>
+                                </View><Text style={styles.txtName}>{item.nome}</Text>
                        
                 </View>}                       
                 />
@@ -113,10 +113,10 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor:'white',
         paddingTop:40,
-        padding:20,
+        padding:10,
         paddingBottom:40,
         justifyContent:'center',
-        
+        alignItems:'center'
        
     },
     styleBorderItem:{
@@ -133,5 +133,8 @@ const styles = StyleSheet.create({
     itemText:{
         fontSize:15,
         color:'#fff'
+    },
+    txtName:{
+        color:'#000'
     }
 })
