@@ -1,9 +1,12 @@
-import React from 'react';
-import {View, Text, Image,SafeAreaView} from 'react-native';
+import React,{useState} from 'react';
+import {View, Text, Image,SafeAreaView, TouchableOpacity, Modal,StyleSheet} from 'react-native';
 import styleRecord from './StyleRecord';
-
-export default function Record(){
-
+import Teste from './teste';
+export default function Record({navigation}){
+  const [modalVisible, setModalVisible]=useState(false);
+function openModal(){
+  setModalVisible(true);
+}
     return(
       
       <SafeAreaView style={styleRecord.container}>
@@ -18,8 +21,51 @@ export default function Record(){
            diário. Para começar, toque no ícone de
            adicionar na tela.
           </Text>
+          <TouchableOpacity 
+          
+          onPress={openModal}>
+            <Text style={{justifyContent:'center',alignItems:'center', fontSize:40}}>+</Text>
+          </TouchableOpacity>
+          
+          <Modal visible={modalVisible}>
+          
+               <TouchableOpacity 
+               style={styles.styleBtn}
+               onPress={()=> setModalVisible(false)}>
+               <Text style={styles.txtBtn}>x</Text>
+             
+              </TouchableOpacity>
+              <Teste/>
+        
+          </Modal>
           </View>
       </SafeAreaView>
   
  
 )}
+
+const styles = StyleSheet.create({
+  containerModal:{
+    flex:1,
+    marginBottom:30
+  },
+  styleBtn:{
+    width: 40,
+    height:40,
+    borderRadius: 10,
+    backgroundColor: '#C6CEFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft:50,
+    marginTop:10,
+
+  },
+  txtBtn:{
+    marginTop:-3,
+    fontSize:23,
+    textAlign:'center',
+    justifyContent:'center'
+  },
+  
+  
+})

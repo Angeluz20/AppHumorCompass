@@ -1,9 +1,13 @@
-import React,{useRef} from "react";
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import React,{useRef, useState} from "react";
+import { Image,Modal,StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import SelectAvatar from "../SelectPhoto/SelectAvatar";
 
-//import SelectAvatar from "../SelectPhoto/SelectAvatar";
 export default ({route, navigation}) => {
+    const [modalVisible, setModalVisible]=useState(false);
+function openModal(){
    
+  setModalVisible(true);
+}
    
     const {item} = route.params 
      
@@ -14,11 +18,23 @@ export default ({route, navigation}) => {
            
            <TouchableOpacity 
            style={styles.btnAlterPhoto}
-           onPress={() => navigation.navigate('SelectAvatar')}
+           onPress={(openModal)}
            >
                 <Text style={styles.btnPhotoText}>ALTERAR FOTO</Text>
             </TouchableOpacity>
-
+         <Modal visible={modalVisible}>
+            <View>
+            <TouchableOpacity 
+               style={styles.styleBtn}
+               onPress={()=> setModalVisible(false)}>
+               <Text style={styles.txtBtn}>x</Text>
+             
+              </TouchableOpacity>
+                
+            
+            </View>
+            <SelectAvatar/>
+         </Modal>
          
             <TextInput style={styles.input}>
                <Text style={{fontWeight:'bold', fontSize:15, color:'black'}}>{item.nome}</Text>
@@ -88,5 +104,16 @@ const styles = StyleSheet.create({
         color:'#304FFE',
         fontSize:15,
         fontWeight:'bold'
+    },
+    styleBtn:{
+      width: 40,
+      height:40,
+      borderRadius: 10,
+      backgroundColor: '#C6CEFF',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginLeft:50,
+      marginTop:10,
+  
     }
 })

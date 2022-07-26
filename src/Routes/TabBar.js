@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 
  export default function TabBar(){
   return(
-    <Tab.Navigator initialRouteName='DailyHumorModal'
+    <Tab.Navigator initialRouteName='RecordDaily'
     screenOptions={{
       tabBarShowLabel:false,
       tabBarStyle:{
@@ -54,8 +54,9 @@ const Tab = createBottomTabNavigator();
               <AntDesign name="pluscircle" color={'#304FFE'} size={45} />
           ),      
         }} 
-          name='DailyHumorModal'
-          component={DailyHumorModal}
+          name='RecordDaily'
+          component={RecordDaily}
+          
       />
 
       <Tab.Screen 

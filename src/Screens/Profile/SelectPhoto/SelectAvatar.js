@@ -68,7 +68,7 @@ export default ({navigation}) => {
            
               />
                 <TouchableOpacity 
-                 onPress={() => navigation.navigate('ProfileScreee')}
+                 onPress={() => navigation.navigate('ProfileEdition')}
                 style={styles.btnSave}
                 >
                     <Text style={styles.btnSaveText}>SALVAR</Text>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     backgroundColor:'white'
    },
    modal:{
-    height:600,
+    flex:1,
     width:'100%',
     alignItems:'center'
    },
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
    title:{
     width:'90%',
     alignItems:'center',
-    marginTop:80,
+    marginTop:100,
     marginBottom:29
    },
    txtTitle:{
